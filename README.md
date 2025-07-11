@@ -29,7 +29,7 @@ This repository contains a dbt-based data pipeline that integrates point-in-time
 
 
 
-Requirements:
+## Requirements:
 Designing a cloud architecture considering business requirements, which include components from the following layers:
 - Ingestion
 - Storage
