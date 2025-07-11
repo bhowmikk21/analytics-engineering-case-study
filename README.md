@@ -24,4 +24,4 @@ This repository contains a dbt-based data pipeline that integrates point-in-time
 - Airflow
 - GIT
 
-<img width="1644" height="1064" alt="image" src="https://github.com/user-attachments/assets/768dfe02-0b3b-48fb-9b6e-576ff7ef3bd8" />
+<img width="822" height="532" alt="image" src="https://github.com/user-attachments/assets/768dfe02-0b3b-48fb-9b6e-576ff7ef3bd8" />
