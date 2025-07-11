@@ -25,3 +25,11 @@ This repository contains a dbt-based data pipeline that integrates point-in-time
 - GIT
 
 <img width="822" height="532" alt="image" src="https://github.com/user-attachments/assets/768dfe02-0b3b-48fb-9b6e-576ff7ef3bd8" />
+
+Requirements:
+Designing a cloud architecture considering business requirements, which include components from the following layers:
+- Ingestion
+- Storage
+- Transformation
+- Scheduling
+- Serving
