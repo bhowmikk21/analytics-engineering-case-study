@@ -1,7 +1,6 @@
 {{
   config(
     materialized = 'view',
-    description = 'Standardizes and stages customer name mapping for downstream enrichment.'
     )
 }}
 
