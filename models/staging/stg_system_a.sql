@@ -1,3 +1,10 @@
+{{
+  config(
+    materialized = 'view',
+    description = 'Standardizes and stages customer name mapping for downstream enrichment.'
+    )
+}}
+
 SELECT
     {{ dbt_utils.generate_surrogate_key(['"A"', 'ref']) }} as company_id,
     'A' AS system_name,
