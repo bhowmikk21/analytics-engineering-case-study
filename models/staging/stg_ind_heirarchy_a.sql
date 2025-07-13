@@ -1,6 +1,7 @@
 {{
   config(
     materialized = 'view',
+    tags = ['staging', 'heirarchy', 'system_a']
     )
 }}
 
