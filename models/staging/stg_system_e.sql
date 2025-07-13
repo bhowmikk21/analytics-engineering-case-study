@@ -16,4 +16,4 @@ SELECT
     CAST(m4 AS INTEGER) AS metric_4,
     CAST(m5 AS FLOAT) AS metric_5,
     CURRENT_DATE AS report_date
-FROM {{ source('report', 'system_e') }};
+FROM {{ source('systems', 'e') }};
