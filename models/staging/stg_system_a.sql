@@ -7,13 +7,13 @@
 SELECT
     {{ dbt_utils.generate_surrogate_key(['"A"', 'ref']) }} as company_id,
     'A' AS system_name,
-    name AS company_name_raw,
+    name AS company_name,
     ref AS company_ref,
     status AS status_summary,
-    CAST(m1 AS INTEGER) AS metric_1,
-    CAST(m2 AS FLOAT) AS metric_2,
-    CAST(m3 AS INTEGER) AS metric_3,
-    CAST(m4 AS INTEGER) AS metric_4,
-    CAST(m5 AS FLOAT) AS metric_5,
-    CURRENT_DATE AS report_date
+    CAST(m1 AS INTEGER) AS "M1",
+    CAST(m2 AS FLOAT) AS "M2",
+    CAST(m3 AS INTEGER) AS "M3",
+    CAST(m4 AS INTEGER) AS "M4",
+    CAST(m5 AS FLOAT) AS "M5",
+    CURRENT_TIMESTAMP() AS report_date
 FROM {{ source('systems', 'a') }};
