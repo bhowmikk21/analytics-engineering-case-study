@@ -10,12 +10,4 @@ SELECT * FROM {{ ref('stg_ind_heirarchy_b') }}
 UNION ALL
 SELECT * FROM {{ ref('stg_ind_heirarchy_c') }}
 UNION ALL
-SELECT * FROM {{ ref('stg_ind_heirarchy_d') }}
-UNION ALL
-SELECT * FROM {{ ref('stg_ind_heirarchy_e') }}
-UNION ALL
-SELECT * FROM {{ ref('stg_ind_heirarchy_f') }}
-UNION ALL
-SELECT * FROM {{ ref('stg_ind_heirarchy_g') }}
-UNION ALL
 SELECT * FROM {{ ref('stg_multi_source_heirarchy') }};

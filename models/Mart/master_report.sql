@@ -1,4 +1,10 @@
-with base as (
+{{ config(
+    materialized = 'table',
+    tags = ['mart', 'final']
+    ) 
+}}
+
+with hierarchy_flaten as (
 SELECT
     gp.parent_ref AS grand_parent_ref,
     gp.parent_sys AS grand_parent_sys,
@@ -6,24 +12,24 @@ SELECT
     ch.parent_sys,
     ch.child_ref,
     ch.child_sys
-FROM company_hierarchy ch
-LEFT JOIN company_hierarchy gp ON ch.parent_ref = gp.child_ref AND ch.parent_sys = gp.child_sys
+FROM heirarchy_combined ch
+LEFT JOIN heirarchy_combined gp ON ch.parent_ref = gp.child_ref AND ch.parent_sys = gp.child_sys
 )
-, base1 as (
-select b.grand_parent_ref, c1.company_name as grand_parent, c1.status as grand_parent_status
-	, b.parent_ref, c2.company_name as parent, c2.status as parent_status
-, b.child_ref
-from base b
-left join company_metrics c1 on b.grand_parent_ref = c1.id
-left join company_metrics c2 on b.parent_ref = c2.id
-left join company_metrics c3 on b.child_ref = c3.id
+, systems_heirarchy as (
+select h.grand_parent_ref, sc1.company_name as grand_parent, sc1.status as grand_parent_status
+  , h.parent_ref, sc2.company_name as parent, sc2.status as parent_status
+  , h.child_ref
+from hierarchy_flaten h
+left join systems_combines sc1 on h.grand_parent_ref = sc1.id
+left join systems_combines sc2 on h.parent_ref = sc2.id
+left join systems_combines sc3 on h.child_ref = sc3.id
 )
-SELECT COALESCE(ch.grand_parent, ch.parent, cm.company_name) AS name,
-	cm.system_id AS system,
-	cm.ref,
-	coalesce(ch.grand_parent_status, ch.parent_status, cm.status) as status
-	,cm.m1, cm.m2, cm.m3, cm.m4, cm.m5
-FROM company_metrics cm
-LEFT JOIN base1 ch ON cm.id = ch.child_ref
+SELECT COALESCE(sh.grand_parent, sh.parent, sc.company_name) AS name,
+	sc.system_id AS system,
+	sc.ref,
+	coalesce(sh.grand_parent_status, sh.parent_status, sc.status) as status
+	,sc.m1, sc.m2, sc.m3, sc.m4, sc.m5
+FROM systems_combined sc
+LEFT JOIN systems_heirarchy sh ON sc.id = sh.child_ref
 ORDER BY name
 
