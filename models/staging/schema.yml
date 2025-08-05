@@ -1,0 +1,129 @@
+version: 2
+
+# Define a source
+sources:
+  - name: systems
+    schema: raw
+    tables:
+      - name: a
+      - name: b
+      - name: c
+      - name: multi_source_heirarchy
+      - name: ind_heirarchy_a
+      - name: ind_heirarchy_b
+      - name: ind_heirarchy_c
+
+# Define models
+models:
+  - name: stg_system_a
+    description: "Staging model for system a data"
+    columns:
+      - name: name
+        tests:
+          - not_null
+          - unique
+      - name: ref
+        tests:
+          - not_null
+          - unique
+      - name: status
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['OPEN', 'NEW', 'ACTIVE', 'INACTIVE']
+     - name: M1
+     - name: M2
+     - name: M3
+     - name: M4
+     - name: M5
+
+  - name: stg_system_b
+    description: "Staging model for system b data"
+    columns:
+      - name: name
+        tests:
+          - not_null
+          - unique
+      - name: ref
+        tests:
+          - not_null
+          - unique
+      - name: status
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['OPEN', 'NEW', 'ACTIVE', 'INACTIVE']
+     - name: M1
+     - name: M2
+     - name: M3
+     - name: M4
+     - name: M5
+
+  - name: stg_system_c
+    description: "Staging model for system c data"
+    columns:
+      - name: name
+        tests:
+          - not_null
+          - unique
+      - name: ref
+        tests:
+          - not_null
+          - unique
+      - name: status
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['OPEN', 'NEW', 'ACTIVE', 'INACTIVE']
+     - name: M1
+     - name: M2
+     - name: M3
+     - name: M4
+     - name: M5
+
+  - name: stg_ind_heirarchy_a
+    description: "Heirarchy model for system a data"
+    columns:
+     - name: parent_id
+     - name: parent_system
+     - name: parent_referance
+     - name: child_id
+     - name: child_system
+     - name: child_referance
+  
+  - name: stg_ind_heirarchy_b
+    description: "Heirarchy model for system b data"
+    columns:
+     - name: parent_id
+     - name: parent_system
+     - name: parent_referance
+     - name: child_id
+     - name: child_system
+     - name: child_referance
+
+  - name: stg_ind_heirarchy_c
+    description: "Heirarchy model for system c data"
+    columns:
+     - name: parent_id
+     - name: parent_system
+     - name: parent_referance
+     - name: child_id
+     - name: child_system
+     - name: child_referance
+    
+    - name: stg_multi_source_heirarchy
+    description: "Heirarchy model for different systems data"
+    columns:
+     - name: parent_id
+     - name: parent_system
+      tests:
+          - accepted_values:
+              values: ['A', 'B', 'C']
+     - name: parent_referance
+     - name: child_id
+     - name: child_system
+      tests:
+          - accepted_values:
+              values: ['A', 'B', 'C']
+     - name: child_referance
+
