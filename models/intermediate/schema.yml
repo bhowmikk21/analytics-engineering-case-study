@@ -1,0 +1,32 @@
+version: 2
+
+# Define models
+models:
+  - name: hierarchy_combined
+    description: "Hierarchy maping model for all source systems"
+    columns:
+     - name: parent_id
+     - name: parent_system
+        tests:
+          - accepted_values:
+              values: ['A', 'B', 'C']
+     - name: parent_referance
+     - name: child_id
+     - name: child_system
+        tests:
+          - accepted_values:
+              values: ['A', 'B', 'C']
+     - name: child_referance
+
+  - name: systems_combined
+    description: "Combining data from all source systems"
+     columns:
+     - name: name
+     - name: ref
+     - name: status
+     - name: M1
+     - name: M2
+     - name: M3
+     - name: M4
+     - name: M5
+

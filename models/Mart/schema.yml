@@ -1,0 +1,18 @@
+version: 2
+
+# Define models
+models:
+  - name: systems_combined
+    description: "Combining data from all source systems"
+     columns:
+     - name: name
+     - name: system
+     - name: ref
+     - name: status
+     - name: M1
+     - name: M2
+     - name: M3
+     - name: M4
+     - name: M5
+
+

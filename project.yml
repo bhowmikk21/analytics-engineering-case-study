@@ -32,8 +32,8 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   analytics_engineering_case_study:
     staging:
-      +materialized: view  # Default materialization for models in the staging directory
+        +materialized: view  # Default materialization for models in the staging directory
     transformation:
-      +materialized: table  # Default materialization for models in the transformation directory
+        +materialized: table  # Default materialization for models in the transformation directory
     mart:
         +materialized: table # Default materialization for models in the mart directory
