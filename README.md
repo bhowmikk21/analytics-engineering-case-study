@@ -1,9 +1,9 @@
 # Analytics Engineering Case Study
-End-to-end data pipeline built using Snowflake, dbt, and Airflow to unify customer status reports from 7 independent source systems, normalize hierarchies, and deliver a single source of truth for reporting.
+End-to-end data pipeline built using Snowflake, dbt, and Airflow to unify customer status reports from 3 independent source systems, normalize hierarchies, and deliver a single source of truth for reporting.
 
 # Unified Customer Status Reporting Pipeline
 
-This repository contains a dbt-based data pipeline that integrates point-in-time customer reports from 7 independent source systems. It standardizes metrics, resolves naming inconsistencies, and flattens multi-tier customer hierarchies to deliver a single, unified customer status mart for downstream consumption in Tableau.
+This repository contains a dbt-based data pipeline that integrates point-in-time customer reports from 3 independent source systems. It standardizes metrics, resolves naming inconsistencies, and flattens multi-tier customer hierarchies to deliver a single, unified customer status mart for downstream consumption in Tableau.
 
 ## Features
 - Ingests reports via Snowpipe / Python / Fivetren
